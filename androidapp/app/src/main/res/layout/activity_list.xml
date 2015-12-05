@@ -14,4 +14,12 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentTop="true"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/switch_map_button"
+        android:id="@+id/switchToMapButton"
+        android:layout_alignBottom="@+id/projectListView"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

@@ -44,8 +44,19 @@ public class RestServiceConsumer {
         @Override
         protected Void doInBackground(Void... params) {
             List<Project> projectList = new ArrayList<>();
-            projectList.add(new Project("Hello"));
+            projectList.add(new Project("Hello",57.7089355,11.9669514));
             projectList.add(new Project("World"));
+            projectList.add(new Project("Hello 1"));
+            projectList.add(new Project("Hello 2"));
+            projectList.add(new Project("Hello 3"));
+            projectList.add(new Project("Hello 4"));
+            projectList.add(new Project("Hello 5"));
+            projectList.add(new Project("Hello 6"));
+            projectList.add(new Project("Hello 7"));
+            projectList.add(new Project("Hello 8"));
+            projectList.add(new Project("Hello 9"));
+            projectList.add(new Project("Hello 10"));
+            projectList.add(new Project("Hello 12"));
             callback.success(projectList);
             return null;
         }
