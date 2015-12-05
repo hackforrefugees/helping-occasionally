@@ -36,14 +36,8 @@ Meteor.startup(() => {
     Rest.addCollection(Causes);
     Rest.addCollection(Projects);
 
-    Rest.addRoute('custom', {
-        get: function () {
-            return {
-                status: 'success',
-                data: 'get something different'
-            };
-        }
-    });
+    // Add native User model
+    Rest.addCollection(Meteor.users);
 });
 
 
