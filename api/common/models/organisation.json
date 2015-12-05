@@ -8,7 +8,13 @@
   },
   "properties": {},
   "validations": [],
-  "relations": {},
+  "relations": {
+    "projectsOwned": {
+      "type": "hasMany",
+      "model": "Project",
+      "foreignKey": "owningOrganisationId"
+    }
+  },
   "acls": [],
   "methods": {}
 }
