@@ -3,6 +3,7 @@
  */
 
 Meteor.startup(() => {
+
     var Rest = new Restivus({
         apiPath: 'api/',
         auth: {
@@ -14,12 +15,15 @@ Meteor.startup(() => {
                 };
             }
         },
+
         defaultHeaders: {
             'Content-Type': 'application/json'
         },
+
         onLoggedIn: function () {
             console.log(this.user.username + ' (' + this.userId + ') logged in');
         },
+
         onLoggedOut: function () {
             console.log(this.user.username + ' (' + this.userId + ') logged out');
         },
