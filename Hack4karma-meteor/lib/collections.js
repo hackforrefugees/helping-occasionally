@@ -3,6 +3,13 @@
  */
 
 /**
+ * Core User model, aliased for convenience.
+ *
+ * @type {any}
+ */
+Users = Meteor.users;
+
+/**
  * Projects, which represent tasks needed by Organisations which need to be done by Volunteers.
  *
  * @type {Mongo.Collection}
