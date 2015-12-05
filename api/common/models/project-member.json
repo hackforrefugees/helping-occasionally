@@ -1,0 +1,35 @@
+{
+  "name": "ProjectMember",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "projectId": {
+      "type": "string",
+      "required": true
+    },
+    "volunteerId": {
+      "type": "string",
+      "required": true,
+      "index": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "project": {
+      "type": "belongsTo",
+      "model": "Project",
+      "foreignKey": "projectId"
+    },
+    "frwrdActivity": {
+      "type": "belongsTo",
+      "model": "Volunteer",
+      "foreignKey": "volunteerId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

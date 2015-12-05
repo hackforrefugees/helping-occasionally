@@ -17,6 +17,12 @@
       "type": "belongsTo",
       "model": "Organisation",
       "foreignKey": "ownedProjectId"
+    },
+    "volunteers": {
+      "type": "hasMany",
+      "model": "Volunteer",
+      "foreignKey": "volunteerId",
+      "through": "ProjectMember"
     }
   },
   "acls": [],

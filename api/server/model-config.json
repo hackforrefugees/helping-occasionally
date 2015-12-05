@@ -61,5 +61,11 @@
     "public": true,
     "$promise": {},
     "$resolved": true
+  },
+  "ProjectMember": {
+    "dataSource": "mongodb",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
   }
 }

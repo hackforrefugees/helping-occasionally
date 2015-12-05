@@ -8,7 +8,14 @@
   },
   "properties": {},
   "validations": [],
-  "relations": {},
+  "relations": {
+    "joinedProjects": {
+      "type": "hasMany",
+      "model": "Project",
+      "foreignKey": "projectId",
+      "through": "ProjectMember"
+    }
+  },
   "acls": [],
   "methods": {}
 }
