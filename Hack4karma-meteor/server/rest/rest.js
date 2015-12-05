@@ -3,7 +3,7 @@
  */
 
 Meteor.startup(() => {
-    let Api = new Restivus({
+    var Rest = new Restivus({
         apiPath: 'api/',
         auth: {
             token: 'auth.apiKey',
@@ -24,16 +24,15 @@ Meteor.startup(() => {
             console.log(this.user.username + ' (' + this.userId + ') logged out');
         },
         prettyJson: true,
-        useDefaultAuth: true,
-        version: 'v1'
+        useDefaultAuth: true
     });
 
     // Add core models
-    Api.addCollection(Skills);
-    Api.addCollection(Causes);
-    Api.addCollection(Projects);
+    Rest.addCollection(Skills);
+    Rest.addCollection(Causes);
+    Rest.addCollection(Projects);
 
-    Api.addRoute('custom', {
+    Rest.addRoute('custom', {
         get: function () {
             return {
                 status: 'success',
