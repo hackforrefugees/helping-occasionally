@@ -11,7 +11,7 @@ ProjectMethods = {
      * @returns {*|boolean}
      */
     exists: (project) => {
-        return project && !!Projects.findOne({_id: project._id});
+        return !!project && !!Projects.findOne({_id: project._id});
     },
 
     /**
@@ -36,4 +36,4 @@ ProjectMethods = {
         // Create a new link instance
         return ProjectMembers.insert({projectId: project._id, userId: user._id});
     }
-}
+};
