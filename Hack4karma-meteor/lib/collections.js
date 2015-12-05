@@ -17,6 +17,13 @@ Users = Meteor.users;
 Projects = new Mongo.Collection('projects');
 
 /**
+ * M2M mapping between Projects and their User members.
+ *
+ * @type {Mongo.Collection}
+ */
+ProjectMembers = new Mongo.Collection('projectMembers');
+
+/**
  * Skills which a Volunteer may possess.
  *
  * @type {Mongo.Collection}
