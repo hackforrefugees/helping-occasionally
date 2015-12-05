@@ -2,7 +2,7 @@
  * Created by csvan on 05/12/15.
  */
 
-class ProjectMethods {
+ProjectMethods = {
 
     /**
      * Utility method to check if a project exists in the database
@@ -10,9 +10,9 @@ class ProjectMethods {
      * @param project
      * @returns {*|boolean}
      */
-    static exists(project) {
+    exists: (project) => {
         return project && !!Projects.findOne({_id: project._id});
-    }
+    },
 
     /**
      * Connects a user to a project.
@@ -20,7 +20,7 @@ class ProjectMethods {
      * @param project
      * @param user
      */
-    static addUser(project, user) {
+    addUser: (project, user) => {
 
         // Verify that the user exists
         let verifiedUser = Meteor.users.findOne({_id: user._id});

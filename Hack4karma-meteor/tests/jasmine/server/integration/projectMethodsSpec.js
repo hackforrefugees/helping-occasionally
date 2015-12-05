@@ -13,6 +13,6 @@ describe('Project Methods', () => {
 
         expect(project).toBeDefined();
 
-        expect(ProjectMethods.exists(project)).to.be(true);
+        expect(ProjectMethods.exists(project)).toBe(true);
     });
 });
