@@ -1,0 +1,24 @@
+{
+  "name": "Project",
+  "base": "PersistedModel",
+  "strict": true,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "ownedBy": {
+      "type": "belongsTo",
+      "model": "Organisation",
+      "foreignKey": "ownedProjectId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

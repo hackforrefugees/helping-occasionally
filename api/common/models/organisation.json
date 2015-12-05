@@ -1,0 +1,20 @@
+{
+  "name": "Organisation",
+  "base": "User",
+  "strict": true,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "projectsOwned": {
+      "type": "hasMany",
+      "model": "Project",
+      "foreignKey": "owningOrganisationId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
