@@ -15,7 +15,7 @@ ProjectMethods = {
     },
 
     /**
-     * Connects a user to a project.
+     * Connects a user to a project. Fails silently if the user is already a members of the project.
      *
      * @param project
      * @param user
@@ -35,5 +35,28 @@ ProjectMethods = {
 
         // Create a new link instance
         return ProjectMembers.insert({projectId: project._id, userId: user._id});
+    },
+
+    /**
+     * Removes a user from a project. Fails silently if the user is not a member of the project.
+     *
+     * @param project
+     * @param user
+     */
+    removeUser: (project, user) => {
+
+        // Verify that the user exists
+        let verifiedUser = Meteor.users.findOne({_id: user._id});
+        if (!verifiedUser) {
+            throw new Error('Invalid user');
+        }
+
+        // Verify that the project exists
+        if (!ProjectMethods.exists(project)) {
+            throw new Error('Project does not exist');
+        }
+
+        // Remove the link
+        return ProjectMembers.remove({projectId: project._id, userId: user._id});
     }
 };
