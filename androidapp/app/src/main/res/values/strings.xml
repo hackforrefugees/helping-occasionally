@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Help4Karma</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="switch_map_button">Swtich To Map</string>
+
+    <string name="applied_toast">Applied to %s. Thank you!</string>
+    <string name="applied_button_applied_text">Applied</string>
+</resources>

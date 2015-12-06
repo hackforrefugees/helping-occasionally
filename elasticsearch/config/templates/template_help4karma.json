@@ -1,0 +1,29 @@
+{
+	"template_help4karma": {
+        "template": "help4karma",
+        "settings": {
+            "index.refresh_interval": "5s"
+        },
+		"mappings": {
+			"project": {
+				"_all": { "enabled": true }
+				"properties": {
+					"name": { "type": "string", "index": "not_analyzed" },
+					"description": { "type": "string" },
+					"location": { "type": "string" },
+					"coordinates": { "type": "geo_point" },
+					"datetime": { "type": "date", "format": "dateOptionalTime" },
+					"skills": { "type": "string" },
+					"organisation": { "type": "string" }
+				}
+			},
+			"user": {
+				"properties": {
+					"name": { "type": "string", "index": "not_analyzed" },
+					"skills": { "type": "string" },
+					"role": { "type": "string", "index": "not_analyzed" }
+				}
+			}
+		}
+	}
+}

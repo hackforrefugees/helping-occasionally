@@ -1,0 +1,50 @@
+<div ng-controller="NewProjectCtrl" layout="column" ng-cloak class="md-inline-form">
+
+    <md-content layout-padding layout-sm="column">
+
+        <form name="newProjectForm">
+
+            <md-input-container>
+                <label>Name</label>
+                <input md-maxlength="30" required name="name" ng-model="newProject.name">
+            </md-input-container>
+
+            <md-datepicker required ng-model="newProject.date" md-placeholder="Enter date"></md-datepicker>
+
+            <md-input-container>
+                <label>Location</label>
+                <input ng-model="newProject.location">
+            </md-input-container>
+
+            <md-input-container>
+                <label>Number of volunteers maximum</label>
+                <input ng-model="newProject.maxNumberCandidate">
+            </md-input-container>
+
+            <md-input-container>
+                <label>Description</label>
+                <input name="description" ng-model="newProject.description">
+            </md-input-container>
+
+        </form>
+
+    </md-content>
+
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+        <md-button class="md-raised md-warn" href="/dashboard">
+            <div layout="horizontal">
+                <i class="material-icons">cancel</i>
+                Cancel
+            </div>
+        </md-button>
+
+        <md-button class="md-raised md-primary" ng-click="create(newProject)">
+            <div layout="horizontal">
+                <i class="material-icons">check</i>
+                Create
+            </div>
+        </md-button>
+    </section>
+
+
+</div>
