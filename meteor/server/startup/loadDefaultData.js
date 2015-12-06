@@ -1,7 +1,7 @@
 Meteor.startup(function () {
     console.log("Project count: " + Projects.find().count());
 
-    //Projects.remove({});
+    Projects.remove({});
 
     if (Projects.find().count() <= 0) {
         console.log("Creating default value for projects");
