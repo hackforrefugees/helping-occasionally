@@ -8,6 +8,10 @@
         </div>
     </md-button>
 
+    <md-button class="md-raised md-primary" href="/dashboard/applications">
+        See Applications
+    </md-button>
+
     <md-data-table-toolbar>
         <h2 class="md-title">Ongoing projects</h2>
     </md-data-table-toolbar>
@@ -25,13 +29,17 @@
             </tr>
             </thead>
             <tbody>
-            <tr md-auto-select ng-repeat="project in projects">
-                <td>{{project.name}}</td>
-                <td>{{project.date}}</td>
-                <td>{{project.location}}</td>
-                <td> {{ project.numberCandidate }} / {{ project.maxNumberCandidate }} (see aplications)</td>
-                <td><i class="material-icons">mode_edit</i></td>
-                <td><i class="material-icons">delete</i></td>
+            <tr md-auto-select ng-repeat="myProject in usersProjects">
+                <td>{{myProject.name}}</td>
+                <td>{{myProject.date}}</td>
+                <td>{{myProject.location}}</td>
+                <td> {{myProject.numberCandidate}} / {{myProject.maxNumberCandidate}}</td>
+                <td>
+                    <i class="material-icons clickable" href="/dashboard/project/{{myProject._id}}/edit">mode_edit</i>
+                </td>
+                <td>
+                    <i class="material-icons clickable" ng-click="delete(myProject)">delete</i>
+                </td>
             </tr>
             </tbody>
         </table>

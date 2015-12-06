@@ -7,6 +7,7 @@ Meteor.startup(function () {
         console.log("Creating default value for projects");
         var projects = [
             {
+                'ownerId': 'ngZNTg7P5arEvpog2',
                 'name': 'project1',
                 'date': '10/10/15',
                 'location': 'Goteborg',
@@ -43,16 +44,7 @@ Meteor.startup(function () {
                 }
             }
         ];
-        for (var i = 0; i < projects.length; i++) {
-            Projects.insert({
-                name: projects[i].name,
-                date: projects[i].date,
-                location: projects[i].location,
-                maxNumberCandidate: projects[i].maxNumberCandidate,
-                numberCandidate: projects[i].numberCandidate,
-                description: projects[i].description,
-                geo: projects[i].geo
-            });
-        }
+
+        projects.forEach(project => Projects.insert(project));
     }
 });

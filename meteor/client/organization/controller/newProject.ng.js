@@ -1,5 +1,5 @@
 angular.module('hack4karma').controller('NewProjectCtrl', function ($scope, $meteor) {
-    $scope.projects = $meteor.collection(Projects).subscribe('projects');
+    $scope.projects = $meteor.collection(Projects).subscribe('user-projects');
 
     $scope.create = function (newProject) {
         if (!newProject)
@@ -7,7 +7,8 @@ angular.module('hack4karma').controller('NewProjectCtrl', function ($scope, $met
 
         // Create object
         newProject.numberCandidate = 0;
-        newProject.owner = $scope.currentUser._id;
+        console.log("UserID creation:" + $scope.currentUser._id);
+        newProject.ownerId = $scope.currentUser._id;
         // Save object to db
         $scope.projects.save(newProject);
         // Reset form

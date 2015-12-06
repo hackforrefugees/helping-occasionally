@@ -2,12 +2,12 @@
     <md-subheader class="md-no-sticky">Dashboard - Applications </md-subheader>
 
     <md-data-table-toolbar>
-        <h2 class="md-title">Pending applications</h2>
+        <h1 class="md-title">Pending applications</h1>
     </md-data-table-toolbar>
 
     <div ng-repeat="project in projects"></div>
 
-    <md-content layout="row">
+    <md-content layout="column">
         <md-card ng-repeat="application in pendingApplications">
             <md-card-title>
                 <md-card-title-text>
@@ -15,21 +15,40 @@
                 </md-card-title-text>
             </md-card-title>
             <md-card-content>
-                Project: projectX
-                Applicant: USER
-                Applicant's points: 666
-                Applicant's cover letter: DKDKKFNFJONEFNENF
+                <p>Project: {{application.project}}</p>
+                <p>Applicant: {{application.user.name}}</p>
+                <p>Applicant's points: {{application.user.points}}</p>
+                <p>Applicant's cover letter: {{application.text}}</p>
             </md-card-content>
             <md-card-actions layout="row" layout-align="end center">
-                <md-button>Accept</md-button>
-                <md-button>Decline</md-button>
+                <md-button ng-click="answerApplication(application, true)">Accept</md-button>
+                <md-button ng-click="answerApplication(application, false)">Decline</md-button>
             </md-card-actions>
         </md-card>
     </md-content>
 
     <md-data-table-toolbar>
-        <h2 class="md-title">Completed applications</h2>
+        <h1 class="md-title">Completed applications</h1>
     </md-data-table-toolbar>
+
+        <md-content layout="column">
+            <md-card ng-repeat="application in answeredApplications">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Alfred hitch for projectX</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content>
+                    <p>Project: {{application.project}}</p>
+                    <p>Applicant: {{application.user.name}}</p>
+                    <p>Applicant's points: {{application.user.points}}</p>
+                    <p>Applicant's cover letter: {{application.text}}</p>
+                </md-card-content>
+                <md-card-actions layout="row" layout-align="end center">
+                    {{application.status}}
+                </md-card-actions>
+            </md-card>
+        </md-content>
 
 
 

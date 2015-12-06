@@ -8,13 +8,14 @@
             Description
             <input ng-model="newProject.description">
         </label>
-        <button ng-click="projects.push(newProject); newProject='';">Add</button>
+        <button ng-click="allProjects.push(newProject); newProject='';">Add</button>
     </form>
 
     <ul>
-        <li ng-repeat="project in projects">
+        <li ng-repeat="project in allProjects">
             {{project.name}}
             <p>{{project.description}}</p>
+            <p>{{project.ownerId}}</p>
             <button ng-click="remove(project)">X</button>
         </li>
     </ul>
