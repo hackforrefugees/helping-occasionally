@@ -49,6 +49,45 @@ Meteor.startup(function () {
                 type: 'Point',
                 coordinates: [11.9666585, 57.7084301]
             }
+        },
+        {
+            'name': 'project4',
+            'date': '10/10/15',
+            'ownerId': 810,
+            'location': 'New York',
+            'maxNumberCandidate': 10,
+            'numberCandidate': 5,
+            'description': 'This project is about doing EVEN more stuff.',
+            geo: {
+                type: 'Point',
+                coordinates: [11.9666185, 57.7082301]
+            }
+        },
+        {
+            'name': 'project5',
+            'date': '10/10/15',
+            'ownerId': 790,
+            'location': 'New York',
+            'maxNumberCandidate': 10,
+            'numberCandidate': 5,
+            'description': 'This project is about doing EVEN more stuff.',
+            geo: {
+                type: 'Point',
+                coordinates: [11.9666985, 57.7081301]
+            }
+        },
+        {
+            'name': 'project6',
+            'date': '10/10/15',
+            'ownerId': 780,
+            'location': 'New FYork',
+            'maxNumberCandidate': 10,
+            'numberCandidate': 5,
+            'description': 'This project is about doing EVEN more stuff.',
+            geo: {
+                type: 'Point',
+                coordinates: [11.9663585, 57.7084101]
+            }
         }
     ];
 
