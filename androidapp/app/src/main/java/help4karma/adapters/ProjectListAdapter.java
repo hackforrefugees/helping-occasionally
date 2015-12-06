@@ -57,7 +57,7 @@ public class ProjectListAdapter extends ArrayAdapter {
         Project project = projects.get(position);
 
         ((TextView)convertView.findViewById(R.id.textViewTitle)).setText(project.getName());
-        ((TextView)convertView.findViewById(R.id.textViewMetadata)).setText(project.getName());
+        ((TextView)convertView.findViewById(R.id.textViewMetadata)).setText(project.getDescription());
 
         return convertView;
     }
