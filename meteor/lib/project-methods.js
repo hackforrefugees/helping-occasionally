@@ -95,7 +95,7 @@ ProjectMethods = {
             throw new Error('Invalid user');
         }
 
-        return Projects.find({}, {ownerId: user._id}).fetch();
+        return Projects.find({ownerId: user._id}).fetch();
     },
 
     /**

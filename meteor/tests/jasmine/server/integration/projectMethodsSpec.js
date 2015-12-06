@@ -118,6 +118,7 @@ describe('Project Methods', () => {
 
             Projects.insert({name: 'Loving'});
             Projects.insert({name: 'Cuddling'});
+            Projects.insert({name: 'Hugging'});
 
             let firstProject = Projects.findOne({name: 'Loving'});
             let secondProject = Projects.findOne({name: 'Cuddling'});
