@@ -80,5 +80,21 @@ ProjectMethods = {
         }
 
         Projects.update(project._id, {ownerId: user._id});
+    },
+
+    /**
+     * Returns all projects owner by user.
+     *
+     * @param user
+     */
+    getProjectsOwnedBy: (user) => {
+
+        // Verify that the user exists
+        let verifiedUser = Meteor.users.findOne({_id: user._id});
+        if (!verifiedUser) {
+            throw new Error('Invalid user');
+        }
+
+        return Projects.find({}, {ownerId: user._id}).fetch();
     }
 };

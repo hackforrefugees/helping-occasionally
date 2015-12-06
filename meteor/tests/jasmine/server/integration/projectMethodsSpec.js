@@ -108,4 +108,30 @@ describe('Project Methods', () => {
             expect(updatedProject.ownerId).toEqual(user._id);
         });
     });
+
+    describe('GetProjectsOwnedBy', () => {
+
+        it('Correctly returns all projects owned by a user', () => {
+
+            Projects.insert({name: 'Loving'});
+            Projects.insert({name: 'Cuddling'});
+
+            let firstProject = Projects.findOne({name: 'Loving'});
+            let secondProject = Projects.findOne({name: 'Cuddling'});
+
+            Accounts.createUser({
+                email: 'larry@loving.long',
+                password: 'password'
+            });
+
+            let user = Meteor.users.findOne({});
+
+            ProjectMethods.setOwner(firstProject, user);
+            ProjectMethods.setOwner(secondProject, user);
+
+            let projectsForUser = ProjectMethods.getProjectsOwnedBy(user);
+            expect(projectsForUser).toBeDefined();
+            expect(projectsForUser.length).toEqual(2);
+        });
+    });
 });
