@@ -1,7 +1,9 @@
 Meteor.startup(function () {
     console.log("Project count: " + Projects.find().count());
 
-    if (Projects.find().count() === 0) {
+    //Projects.remove({});
+
+    if (Projects.find().count() <= 0) {
         console.log("Creating default value for projects");
         var projects = [
             {
@@ -10,7 +12,11 @@ Meteor.startup(function () {
                 'location': 'Goteborg',
                 'maxNumberCandidate': 10,
                 'numberCandidate': 5,
-                'description': 'This project is about doing stuff.'
+                'description': 'This project is about doing stuff.',
+                geo: {
+                    type: 'Point',
+                    coordinates: [11.9669514, 57.7089355]
+                }
             },
             {
                 'name': 'project2',
@@ -18,7 +24,11 @@ Meteor.startup(function () {
                 'location': 'Paris',
                 'maxNumberCandidate': 10,
                 'numberCandidate': 5,
-                'description': 'This project is about doing more stuff than project1.'
+                'description': 'This project is about doing more stuff than project1.',
+                geo: {
+                    type: 'Point',
+                    coordinates: [11.9669585, 57.7089301]
+                }
             },
             {
                 'name': 'project3',
@@ -26,7 +36,11 @@ Meteor.startup(function () {
                 'location': 'New York',
                 'maxNumberCandidate': 10,
                 'numberCandidate': 5,
-                'description': 'This project is about doing EVEN more stuff.'
+                'description': 'This project is about doing EVEN more stuff.',
+                geo: {
+                    type: 'Point',
+                    coordinates: [11.9666585, 57.7084301]
+                }
             }
         ];
         for (var i = 0; i < projects.length; i++) {
