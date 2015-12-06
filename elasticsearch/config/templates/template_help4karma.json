@@ -14,7 +14,7 @@
 					"coordinates": { "type": "geo_point" },
 					"datetime": { "type": "date", "format": "dateOptionalTime" },
 					"skills": { "type": "string" },
-					"organization": { "type": "string" }
+					"organisation": { "type": "string" }
 				}
 			},
 			"user": {
