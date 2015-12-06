@@ -183,4 +183,51 @@ describe('Project Methods', () => {
             }).toThrow(new Error('This user already has a pending application for this project'));
         });
     });
-});
+
+    describe('AddMemberForProject', () => {
+
+        beforeEach(() => {
+            clearDatabase();
+        });
+
+        it('Correctly adds a user as a member', () => {
+
+            Projects.insert({name: 'Loving'});
+
+            let project = Projects.findOne({name: 'Loving'});
+
+            Accounts.createUser({
+                email: 'anna@applying.now',
+                password: 'password'
+            });
+
+            let user = Meteor.users.findOne({});
+
+            ProjectMethods.addMemberForProject(project, user);
+            let membership = ProjectMembers.findOne({userId: user._id, projectId: project._id});
+            expect(membership).toBeDefined();
+            expect(membership.projectId).toEqual(project._id);
+            expect(membership.userId).toEqual(user._id);
+        });
+
+        it('Does not allow a member to become a member of an application twice', () => {
+
+            Projects.insert({name: 'Loving'});
+
+            let project = Projects.findOne({name: 'Loving'});
+
+            Accounts.createUser({
+                email: 'anna@applying.now',
+                password: 'password'
+            });
+
+            let user = Meteor.users.findOne({});
+
+            ProjectMethods.addMemberForProject(project, user);
+            expect(function () {
+                ProjectMethods.addMemberForProject(project, user)
+            }).toThrow(new Error('This user is already a member of this project'));
+        });
+    });
+})
+;

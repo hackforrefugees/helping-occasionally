@@ -131,5 +131,36 @@ ProjectMethods = {
             text: applicationText,
             status: 'pending'
         });
+    },
+
+    /**
+     * Sets user as a member of project.
+     *
+     * @param project
+     * @param user
+     */
+    addMemberForProject: (project, user) => {
+
+        // Verify that the user exists
+        let verifiedUser = Meteor.users.findOne({_id: user._id});
+        if (!verifiedUser) {
+            throw new Error('Invalid user');
+        }
+
+        // Verify that the project exists
+        if (!ProjectMethods.exists(project)) {
+            throw new Error('Project does not exist');
+        }
+
+        // Verify that the user isn't already a member of this project
+        let existingMembership = ProjectMembers.findOne({projectId: project._id, userId: user._id});
+        if (!!existingMembership) {
+            throw new Error('This user is already a member of this project');
+        }
+
+        return ProjectMembers.insert({
+            projectId: project._id,
+            userId: user._id
+        });
     }
 };
