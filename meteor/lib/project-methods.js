@@ -162,5 +162,28 @@ ProjectMethods = {
             projectId: project._id,
             userId: user._id
         });
+    },
+
+    /**
+     * Returns all members for project.
+     *
+     * @param project
+     */
+    getMembersForProject: (project) => {
+
+        // Verify that the project exists
+        if (!ProjectMethods.exists(project)) {
+            throw new Error('Project does not exist');
+        }
+
+        let memberRelations = ProjectMembers.find({projectId: project._id}).fetch();
+
+        let members = [];
+        memberRelations.forEach(relation => {
+            let member = Meteor.users.findOne({_id: relation.userId});
+            members.push(member);
+        });
+
+        return members;
     }
 };

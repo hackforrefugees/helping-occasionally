@@ -230,5 +230,39 @@ describe('Project Methods', () => {
             }).toThrow(new Error('This user is already a member of this project'));
         });
     });
-})
-;
+
+    describe('GetMembersForProject', () => {
+
+        it('Correctly adds a user as a member', () => {
+
+            Projects.insert({name: 'Loving'});
+
+            let project = Projects.findOne({name: 'Loving'});
+
+            Accounts.createUser({
+                email: 'anna@applying.now',
+                password: 'password'
+            });
+            let anna = Meteor.users.findOne({email: 'anna@applying.now'});
+
+            Accounts.createUser({
+                email: 'anders@applying.now',
+                password: 'password'
+            });
+            let anders = Meteor.users.findOne({email: 'anders@applying.now'});
+
+            Accounts.createUser({
+                email: 'anki@applying.now',
+                password: 'password'
+            });
+            let anki = Meteor.users.findOne({email: 'anki@applying.now'});
+
+            ProjectMethods.addMemberForProject(project, anki);
+            ProjectMethods.addMemberForProject(project, anders);
+
+            let members = ProjectMethods.getMembersForProject(project);
+            expect(members).toBeDefined();
+            expect(members.length).toEqual(2);
+        });
+    });
+});
