@@ -21,7 +21,7 @@ import help4karma.models.Project;
  */
 public class RestServiceConsumer {
 
-    private String serviceUrl = "http://todo";
+    private final String serviceUrl = "http://hack4refugees.svanefalk.com/api/";
 
     public void search(Location location, SearchCallback callback) {
 
@@ -31,6 +31,11 @@ public class RestServiceConsumer {
     public void mockSearch(Location location, SearchCallback callback) {
 
         (new startMockSearchTask(callback)).execute();
+    }
+
+    public boolean applyForProject(Project project) {
+        // Todo
+        return true;
     }
 
     private class startMockSearchTask extends AsyncTask<Void, Void, Void> {
@@ -44,19 +49,8 @@ public class RestServiceConsumer {
         @Override
         protected Void doInBackground(Void... params) {
             List<Project> projectList = new ArrayList<>();
-            projectList.add(new Project("Hello",57.7089355,11.9669514));
-            projectList.add(new Project("World"));
-            projectList.add(new Project("Hello 1"));
-            projectList.add(new Project("Hello 2"));
-            projectList.add(new Project("Hello 3"));
-            projectList.add(new Project("Hello 4"));
-            projectList.add(new Project("Hello 5"));
-            projectList.add(new Project("Hello 6"));
-            projectList.add(new Project("Hello 7"));
-            projectList.add(new Project("Hello 8"));
-            projectList.add(new Project("Hello 9"));
-            projectList.add(new Project("Hello 10"));
-            projectList.add(new Project("Hello 12"));
+            projectList.add(new Project("1","Hello",57.7089355,11.9669514));
+            projectList.add(new Project("2","World"));
             callback.success(projectList);
             return null;
         }
@@ -72,17 +66,19 @@ public class RestServiceConsumer {
             this.callback = callback;
         }
 
-
-
         @Override
         protected Void doInBackground(Void... params) {
 
             try {
-                URL url = new URL(serviceUrl);
+                URL url = new URL(serviceUrl + "projects");
                 URLConnection connection = null;
                 connection = url.openConnection();
                 JSONObject obj = new JSONObject(IOUtils.toString(connection.getInputStream(), "utf-8"));
-                callback.success(Project.createProjectsFromJson(obj));
+                if (obj.getString("status") == null || !obj.getString("status").equals("success")) {
+                    callback.failure("Status on successful");
+                } else {
+                    callback.success(Project.createProjectsFromJson(obj));
+                }
             } catch (IOException e) {
                 e.printStackTrace();
                 callback.failure("Network Error");
