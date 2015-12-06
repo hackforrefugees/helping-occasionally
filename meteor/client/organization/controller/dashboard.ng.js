@@ -1,9 +1,6 @@
 angular.module('hack4karma').controller('DashboardCtrl', function ($scope, $meteor, $location) {
 
-    $scope.usersProjects = $meteor.collection(Projects).subscribe('projects').filter(
-        function (project) {
-            return (project.ownerId === $scope.currentUser._id);
-        });
+    $scope.usersProjects = $meteor.collection(Projects).subscribe('projects');
 
     $scope.selected = [];
 
@@ -32,15 +29,15 @@ angular.module('hack4karma').controller('DashboardCtrl', function ($scope, $mete
      // you can implement your own search header and do something like
      $scope.search = function (predicate) {
      $scope.filter = predicate;
-     $scope.deferred =  $scope.projects.get($scope.query, success).$promise;
+     $scope.deferred =  $scope.allProjects.get($scope.query, success).$promise;
      };
 
      $scope.onOrderChange = function (order) {
-     return $scope.projects.get($scope.query, success).$promise;
+     return $scope.allProjects.get($scope.query, success).$promise;
      };
 
      $scope.onPaginationChange = function (page, limit) {
-     return  $scope.projects.get($scope.query, success).$promise;
+     return  $scope.allProjects.get($scope.query, success).$promise;
      };
      */
 });

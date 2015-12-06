@@ -6,7 +6,7 @@
         },
 		"mappings": {
 			"project": {
-				"_all": { "enabled": true }
+				"_all": { "enabled": true },
 				"properties": {
 					"name": { "type": "string", "index": "not_analyzed" },
 					"description": { "type": "string" },

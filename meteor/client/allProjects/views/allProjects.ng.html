@@ -1,0 +1,36 @@
+<div ng-controller="allProjectsCtrl">
+
+    <md-data-table-toolbar>
+        <h1 class="md-title">All projects</h1>
+    </md-data-table-toolbar>
+
+    <md-content layout="row">
+
+
+        <md-content layout="column" flex="45">
+            <md-card ng-repeat="project in projects">
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">{{project.name}}</span>
+                    </md-card-title-text>
+                </md-card-title>
+                <md-card-content ng-click="isOpen=!isOpen">
+                    <p>Date: {{project.date}}</p>
+                    <p>Location: {{project.location}}</p>
+                    <md-divider ng-if="isOpen"></md-divider>
+                    <p ng-if="!isOpen">(Click for more details)</p>
+                    <p ng-if="isOpen">{{project.description}}</p>
+                </md-card-content>
+
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button ng-click="apply(project)">Apply</md-button>
+                </md-card-actions>
+            </md-card>
+        </md-content>
+
+        <md-content>
+            MAP HERE
+        </md-content>
+
+    </md-content>
+</div>

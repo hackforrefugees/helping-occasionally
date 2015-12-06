@@ -83,7 +83,7 @@ ProjectMethods = {
     },
 
     /**
-     * Returns all projects owner by user.
+     * Returns all allProjects owner by user.
      *
      * @param user
      */

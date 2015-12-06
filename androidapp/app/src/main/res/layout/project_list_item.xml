@@ -22,6 +22,13 @@
         android:id="@+id/textViewMetadata"
         android:paddingRight="70dp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textViewPlaceAndDate"
+        android:layout_below="@+id/textViewMetadata" />
+
     <Button
         style="?android:attr/buttonStyleSmall"
         android:layout_alignParentRight="true"

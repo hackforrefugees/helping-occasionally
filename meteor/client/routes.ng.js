@@ -2,8 +2,15 @@ angular.module("hack4karma").run(function ($rootScope, $state) {
     $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {
         // We can catch the error thrown when the $requireUser promise is rejected
         // and redirect the user back to the main page
-        if (error === 'AUTH_REQUIRED') {
-            $state.go('error403');
+        switch(error) {
+            case "AUTH_REQUIRED":
+                $state.go('error403');
+                break;
+            case "UNAUTHORIZED":
+                $state.go('error403');
+                break;
+            default:
+                break;
         }
     });
 });
@@ -12,10 +19,10 @@ angular.module("hack4karma").config(function ($urlRouterProvider, $stateProvider
     $locationProvider.html5Mode(true);
 
     $stateProvider
-        .state('projects', {
-            url: '/projects',
-            templateUrl: 'client/projects/views/projects-list.ng.html',
-            controller: 'ProjectsListCtrl'
+        .state('allProjects', {
+            url: '/allProjects',
+            templateUrl: 'client/allProjects/views/allProjects.ng.html',
+            controller: 'allProjectsCtrl'
         })
         .state('dashboard', {
             url: '/dashboard',
@@ -24,6 +31,10 @@ angular.module("hack4karma").config(function ($urlRouterProvider, $stateProvider
             resolve: {
                 // todo: check if user is an organizer
                 "currentUser": function ($meteor) {
+                    if($scope.currentUser.profile.accountType !== "organizer")
+                    {
+                        return 'UNAUTHORIZED';
+                    }
                     return $meteor.requireUser();
                 }
             }
@@ -53,7 +64,7 @@ angular.module("hack4karma").config(function ($urlRouterProvider, $stateProvider
         .state('home', {
             url: '/',
             templateUrl: 'client/home/views/home.ng.html',
-            controller: 'ProjectsListCtrl'
+            controller: 'AppCtrl'
         })
         .state('about', {
             url: '/About',

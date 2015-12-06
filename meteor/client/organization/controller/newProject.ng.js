@@ -1,5 +1,5 @@
 angular.module('hack4karma').controller('NewProjectCtrl', function ($scope, $meteor) {
-    $scope.projects = $meteor.collection(Projects).subscribe('user-projects');
+    $scope.projects = $meteor.collection(Projects).subscribe('user-allProjects');
 
     $scope.create = function (newProject) {
         if (!newProject)
