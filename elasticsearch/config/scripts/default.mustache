@@ -1,0 +1,54 @@
+{
+	"from": 0,
+	"size": 10,
+	"query": {
+		"filtered": {
+			"query": {
+				"query_string": {
+					"query": "{{query}}{{^query}}*{{/query}}"
+					,
+					"default_operator": "or",
+					"fields" : [
+						"name^3",
+						"description",
+						"location^2",
+						"organisation"
+					]
+				}
+			},
+			"filter": {
+					"and": [
+						{
+							"geo_distance": {
+								"distance": "{{distance}}{{^distance}}100{{/distance}}{{unit}}{{^unit}}km{{/unit}}",
+								"coordinates": {
+									"lon": {{lon}},
+									"lat": {{lat}}
+								}
+							}
+						},
+						{
+							"range": {
+								"datetime": {
+									"gte": "now/d"
+								}
+							}
+						}
+					],
+				"must": {
+					"or": [
+						{{#skills}}
+						{
+							"match": { "skills": "{{.}}" } 
+						},
+						{{/skills}}
+						{}
+					]
+				}
+			}
+		}
+	},
+	"sort": {
+		"datetime": { "order": "ASC" }
+	}
+}
