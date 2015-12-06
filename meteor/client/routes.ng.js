@@ -22,6 +22,7 @@ angular.module("hack4karma").config(function ($urlRouterProvider, $stateProvider
             templateUrl: 'client/organization/view/dashboard.ng.html',
             controller: 'DashboardCtrl',
             resolve: {
+                // todo: check if user is an organizer
                 "currentUser": function ($meteor) {
                     return $meteor.requireUser();
                 }
@@ -30,17 +31,34 @@ angular.module("hack4karma").config(function ($urlRouterProvider, $stateProvider
         .state('newProject', {
             url: '/dashboard/newProject',
             templateUrl: 'client/organization/view/newProject.ng.html',
-            controller: 'NewProjectCtrl'
+            controller: 'NewProjectCtrl',
+            resolve: {
+                // todo: check if user is an organizer
+                "currentUser": function ($meteor) {
+                    return $meteor.requireUser();
+                }
+            }
         })
         .state('dashboard-applications', {
             url: '/dashboard/applications',
             templateUrl: 'client/organization/view/dashboard-applications.ng.html',
-            controller: 'DashboardApplicationsCtrl'
+            controller: 'DashboardApplicationsCtrl',
+            resolve: {
+                "currentUser": function ($meteor) {
+                    // todo: check if user is an organizer
+                    return $meteor.requireUser();
+                }
+            }
         })
         .state('home', {
             url: '/',
             templateUrl: 'client/home/views/home.ng.html',
             controller: 'ProjectsListCtrl'
+        })
+        .state('about', {
+            url: '/About',
+            templateUrl: 'client/about/views/about.ng.html',
+            controller: 'AboutCtrl'
         })
         .state('error403', {
             url: '/Error403',

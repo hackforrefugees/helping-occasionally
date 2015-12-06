@@ -1,6 +1,9 @@
 angular.module('hack4karma').controller('DashboardCtrl', function ($scope, $meteor, $location) {
-    $scope.projects = $meteor.collection(Projects).subscribe('projects');
 
+    $scope.usersProjects = $meteor.collection(Projects).subscribe('projects').filter(
+        function (project) {
+            return (project.ownerId === $scope.currentUser._id);
+        });
 
     $scope.selected = [];
 
@@ -13,6 +16,10 @@ angular.module('hack4karma').controller('DashboardCtrl', function ($scope, $mete
 
     $scope.openProject = function (project) {
         $location.path("/Project/" + project._id);
+    };
+
+    $scope.delete = function(project){
+        $scope.usersProjects.splice($scope.usersProjects.indexOf(project), 1);
     };
 
     // TODO: Fix ordering, sort and pagination. Using https://github.com/daniel-nagy/md-data-table#usage
