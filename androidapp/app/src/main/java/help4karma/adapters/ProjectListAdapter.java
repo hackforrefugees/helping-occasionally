@@ -75,6 +75,7 @@ public class ProjectListAdapter extends ArrayAdapter {
                         @Override
                         public void run() {
                             appliedButton.setText(R.string.applied_button_applied_text);
+                            appliedButton.setEnabled(false);
                             Toast.makeText(
                                     context,
                                     context.getString(R.string.applied_toast, project.getName()),
