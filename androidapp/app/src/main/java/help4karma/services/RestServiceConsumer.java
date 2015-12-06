@@ -33,6 +33,11 @@ public class RestServiceConsumer {
         (new startMockSearchTask(callback)).execute();
     }
 
+    public boolean applyForProject(Project project) {
+        // Todo
+        return true;
+    }
+
     private class startMockSearchTask extends AsyncTask<Void, Void, Void> {
 
         public startMockSearchTask(SearchCallback callback) {

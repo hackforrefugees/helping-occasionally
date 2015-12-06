@@ -1,0 +1,36 @@
+<div ng-controller="DashboardApplicationsCtrl">
+    <md-subheader class="md-no-sticky">Dashboard - Applications </md-subheader>
+
+    <md-data-table-toolbar>
+        <h2 class="md-title">Pending applications</h2>
+    </md-data-table-toolbar>
+
+    <div ng-repeat="project in projects"></div>
+
+    <md-content layout="row">
+        <md-card ng-repeat="application in pendingApplications">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Alfred hitch for projectX</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                Project: projectX
+                Applicant: USER
+                Applicant's points: 666
+                Applicant's cover letter: DKDKKFNFJONEFNENF
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+                <md-button>Accept</md-button>
+                <md-button>Decline</md-button>
+            </md-card-actions>
+        </md-card>
+    </md-content>
+
+    <md-data-table-toolbar>
+        <h2 class="md-title">Completed applications</h2>
+    </md-data-table-toolbar>
+
+
+
+</div>
