@@ -1,9 +1,7 @@
 Meteor.startup(function () {
     console.log("Project count: " + Projects.find().count());
 
-    Projects.remove({});
-
-    if (Projects.find().count() <= 0) {
+    if (Projects.find().count() <= 3) {
         console.log("Creating default value for projects");
         var projects = [
             {
@@ -50,7 +48,8 @@ Meteor.startup(function () {
                 location: projects[i].location,
                 maxNumberCandidate: projects[i].maxNumberCandidate,
                 numberCandidate: projects[i].numberCandidate,
-                description: projects[i].description
+                description: projects[i].description,
+                geo: projects[i].geo
             });
         }
     }
