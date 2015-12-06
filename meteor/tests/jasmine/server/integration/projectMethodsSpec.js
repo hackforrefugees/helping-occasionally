@@ -56,19 +56,33 @@ describe('Project Methods', () => {
             ProjectMethods.addUser(project, user);
             let projectMethodMapping = ProjectMembers.findOne({userId: user._id, projectId: project._id});
 
+            expect(projectMethodMapping).toBeDefined();
             expect(projectMethodMapping.userId).toEqual(user._id);
             expect(projectMethodMapping.projectId).toEqual(project._id);
         });
+    });
 
-        it('Does not show an non-existing project as existing', () => {
+    describe('RemoveUser', () => {
+
+        it('Correctly removes a user from the project', () => {
 
             Projects.insert({name: 'Loving'});
+            let project = Projects.findOne({name: 'Loving'});
+            expect(project).toBeDefined();
 
-            let project = Projects.findOne({name: 'Hating'});
+            Accounts.createUser({
+                email: 'larry@loving.long',
+                password: 'password'
+            });
 
-            expect(project).toBeUndefined();
+            let user = Meteor.users.findOne({});
+            expect(user).toBeDefined();
 
-            expect(ProjectMethods.exists(project)).toBe(false);
+            ProjectMethods.addUser(project, user);
+            ProjectMethods.removeUser(project, user);
+
+            let projectMethodMapping = ProjectMembers.findOne({userId: user._id, projectId: project._id});
+            expect(projectMethodMapping).toBeUndefined();
         });
     });
 });
