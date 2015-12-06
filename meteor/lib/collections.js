@@ -29,6 +29,12 @@ Projects.allow({
     }
 });
 
+/**
+ * An application for a Project made by a User.
+ *
+ * @type {collectionFn}
+ */
+ProjectApplications = new Mongo.Collection('projectApplication');
 
 /**
  * M2M mapping between Projects and their User members.

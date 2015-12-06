@@ -96,5 +96,40 @@ ProjectMethods = {
         }
 
         return Projects.find({}, {ownerId: user._id}).fetch();
+    },
+
+    /**
+     * Creates a user application for a project.
+     *
+     * @param project
+     * @param user
+     * @param applicationText
+     * @returns {*|any}
+     */
+    addApplicationForProject: (project, user, applicationText) => {
+
+        // Verify that the user exists
+        let verifiedUser = Meteor.users.findOne({_id: user._id});
+        if (!verifiedUser) {
+            throw new Error('Invalid user');
+        }
+
+        // Verify that the project exists
+        if (!ProjectMethods.exists(project)) {
+            throw new Error('Project does not exist');
+        }
+
+        // Verify that we do not already have an active application for this project.
+        let existingApplication = ProjectApplications.findOne({projectId: project._id, userId: user._id});
+        if (!!existingApplication) {
+            throw new Error('This user already has a pending application for this project');
+        }
+
+        return ProjectApplications.insert({
+            projectId: project._id,
+            userId: user._id,
+            text: applicationText,
+            status: 'pending'
+        });
     }
 };

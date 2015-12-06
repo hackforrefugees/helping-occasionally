@@ -2,14 +2,17 @@
  * Created by csvan on 05/12/15.
  */
 
+function clearDatabase() {
+    Meteor.users.remove({});
+    Projects.remove({});
+    ProjectMembers.remove({});
+    ProjectApplications.remove({});
+}
+
 describe('Project Methods', () => {
 
     beforeEach(() => {
-
-        // Clear database
-        Meteor.users.remove({});
-        Projects.remove({});
-        ProjectMembers.remove({});
+        clearDatabase();
     });
 
     describe('Exists', () => {
@@ -132,6 +135,52 @@ describe('Project Methods', () => {
             let projectsForUser = ProjectMethods.getProjectsOwnedBy(user);
             expect(projectsForUser).toBeDefined();
             expect(projectsForUser.length).toEqual(2);
+        });
+    });
+
+    describe('AddApplicationForProject', () => {
+
+        beforeEach(() => {
+            clearDatabase();
+        });
+
+        it('Correctly adds a user application for a project', () => {
+
+            Projects.insert({name: 'Loving'});
+
+            let project = Projects.findOne({name: 'Loving'});
+
+            Accounts.createUser({
+                email: 'anna@applying.now',
+                password: 'password'
+            });
+
+            let user = Meteor.users.findOne({});
+
+            ProjectMethods.addApplicationForProject(project, user, 'I want to help out!!');
+            let userApplication = ProjectApplications.findOne({userId: user._id, projectId: project._id});
+            expect(userApplication).toBeDefined();
+            expect(userApplication.projectId).toEqual(project._id);
+            expect(userApplication.userId).toEqual(user._id);
+        });
+
+        it('Does not allow a user to make a duplicate application', () => {
+
+            Projects.insert({name: 'Loving'});
+
+            let project = Projects.findOne({name: 'Loving'});
+
+            Accounts.createUser({
+                email: 'anna@applying.now',
+                password: 'password'
+            });
+
+            let user = Meteor.users.findOne({});
+
+            ProjectMethods.addApplicationForProject(project, user, 'I want to help out!!');
+            expect(function () {
+                ProjectMethods.addApplicationForProject(project, user, 'Applying again just in case')
+            }).toThrow(new Error('This user already has a pending application for this project'));
         });
     });
 });
