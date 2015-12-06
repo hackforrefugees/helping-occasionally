@@ -32,6 +32,11 @@ angular.module("hack4karma").config(function ($urlRouterProvider, $stateProvider
             templateUrl: 'client/organization/view/newProject.ng.html',
             controller: 'NewProjectCtrl'
         })
+        .state('dashboard-applications', {
+            url: '/dashboard/applications',
+            templateUrl: 'client/organization/view/dashboard-applications.ng.html',
+            controller: 'DashboardApplicationsCtrl'
+        })
         .state('home', {
             url: '/',
             templateUrl: 'client/home/views/home.ng.html',
