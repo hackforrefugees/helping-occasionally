@@ -7,7 +7,13 @@ Meteor.startup(function () {
     // Insert mock user
     let userId = Accounts.createUser({
         email: 'admin@admin.com',
-        password: 'password'
+        password: 'password',
+        profile: {accountType:'organizer'}
+    });
+    Accounts.createUser({
+        email: 'test@test.com',
+        password: 'password',
+        profile: {accountType:'volunteer'}
     });
 
     var projects = [
