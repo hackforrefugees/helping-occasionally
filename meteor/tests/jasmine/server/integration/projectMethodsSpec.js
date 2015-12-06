@@ -85,4 +85,27 @@ describe('Project Methods', () => {
             expect(projectMethodMapping).toBeUndefined();
         });
     });
+
+    describe('SetOwner', () => {
+
+        it('Correctly sets the owner of a project to the selected user', () => {
+
+            Projects.insert({name: 'Loving'});
+            let project = Projects.findOne({name: 'Loving'});
+            expect(project).toBeDefined();
+
+            Accounts.createUser({
+                email: 'larry@loving.long',
+                password: 'password'
+            });
+
+            let user = Meteor.users.findOne({});
+            expect(user).toBeDefined();
+
+            ProjectMethods.setOwner(project, user);
+            let updatedProject = Projects.findOne({_id: project._id});
+            expect(updatedProject).toBeDefined();
+            expect(updatedProject.ownerId).toEqual(user._id);
+        });
+    });
 });

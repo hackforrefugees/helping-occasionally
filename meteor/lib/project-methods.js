@@ -58,5 +58,27 @@ ProjectMethods = {
 
         // Remove the link
         return ProjectMembers.remove({projectId: project._id, userId: user._id});
+    },
+
+    /**
+     * Sets or changes the owner of a project.
+     *
+     * @param project
+     * @param user
+     */
+    setOwner(project, user) {
+
+        // Verify that the user exists
+        let verifiedUser = Meteor.users.findOne({_id: user._id});
+        if (!verifiedUser) {
+            throw new Error('Invalid user');
+        }
+
+        // Verify that the project exists
+        if (!ProjectMethods.exists(project)) {
+            throw new Error('Project does not exist');
+        }
+
+        Projects.update(project._id, {ownerId: user._id});
     }
 };
