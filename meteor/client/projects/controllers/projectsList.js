@@ -5,4 +5,3 @@ angular.module('hack4karma').controller('ProjectsListCtrl', function ($scope, $m
         $scope.projects.splice($scope.projects.indexOf(project), 1);
     };
 });
-
