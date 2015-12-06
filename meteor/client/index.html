@@ -1,0 +1,27 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <base href="/">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body layout="column" ng-app="hack4karma" ng-strict-di="" ng-controller="AppCtrl">
+<h1 layout-align="horizontal">Hack4Karma</h1>
+
+<md-toolbar layout="row" layout-align="space-between center">
+    <!--The left side-->
+        <span>
+            <md-button href="/">Home</md-button>
+            <md-button href="/projects">Projects</md-button>
+            <md-button href="/dashboard">DashboardOrga</md-button>
+        </span>
+    <!--The right side-->
+        <span>
+            <login-buttons></login-buttons>
+        </span>
+    <span></span>
+</md-toolbar>
+
+<div ui-view></div>
+
+</body>

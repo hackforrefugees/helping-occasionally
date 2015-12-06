@@ -1,0 +1,39 @@
+<div ng-controller="DashboardCtrl">
+    <md-subheader class="md-no-sticky">Welcome to your dashboard</md-subheader>
+
+    <md-button class="md-raised md-primary" href="/dashboard/newProject">
+        <div layout="horizontal">
+            <i class="material-icons">add_circle_outline</i>
+            New project
+        </div>
+    </md-button>
+
+    <md-data-table-toolbar>
+        <h2 class="md-title">Ongoing projects</h2>
+    </md-data-table-toolbar>
+
+    <md-data-table-container>
+        <table md-data-table md-row-select="selected" md-progress="deferred">
+            <thead md-order="order">
+            <tr>
+                <th name="Name" order-by="name.values">Name</th>
+                <th name="Date" order-by="date">Date</th>
+                <th name="Location" order-by="location">Location</th>
+                <th name="Volunteers" order-by="volunteers">Volunteers</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr md-auto-select ng-repeat="project in projects">
+                <td>{{project.name}}</td>
+                <td>{{project.date}}</td>
+                <td>{{project.location}}</td>
+                <td> {{ project.numberCandidate }} / {{ project.maxNumberCandidate }}</td>
+                <td><i class="material-icons">mode_edit</i></td>
+                <td><i class="material-icons">delete</i></td>
+            </tr>
+            </tbody>
+        </table>
+    </md-data-table-container>
+</div>
