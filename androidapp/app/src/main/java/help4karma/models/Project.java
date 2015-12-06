@@ -57,6 +57,14 @@ public class Project {
         return lon;
     }
 
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public void setLon(Double lon) {
+        this.lon = lon;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -109,6 +117,13 @@ public class Project {
             project.setDescription(jsonProject.getString("description"));
             project.setCurrentNumberOfCandidates(jsonProject.getInt("numberCandidate"));
             project.setMaxNumberOfCandidates(jsonProject.getInt("maxNumberCandidate"));
+
+            if (jsonProject.has("geo")) {
+                JSONArray jsonCoordinates = jsonProject.getJSONObject("geo").getJSONArray("coordinates");
+                project.setLat(jsonCoordinates.getDouble(1));
+                project.setLon(jsonCoordinates.getDouble(0));
+            }
+
             projectList.add(project);
         }
 
