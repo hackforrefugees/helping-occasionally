@@ -65,17 +65,31 @@ public class ProjectListAdapter extends ArrayAdapter {
 
         ((TextView)convertView.findViewById(R.id.textViewTitle)).setText(project.getName());
         ((TextView)convertView.findViewById(R.id.textViewMetadata)).setText(project.getDescription());
+        ((TextView)convertView.findViewById(R.id.textViewPlaceAndDate)).setText(project.getLocation() + " - " + project.getDate());
         final Button appliedButton = (Button)convertView.findViewById(R.id.applyButton);
         appliedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean status = service.applyForProject(project);
-                if (status) {
+                boolean isApplied = project.isApplied();
+                if (isApplied) {
                     ((Activity) context).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            appliedButton.setText(R.string.applied_button_applied_text);
-                            appliedButton.setEnabled(false);
+                            project.setIsApplied(service.unapplyForProject(project));
+                            appliedButton.setText(R.string.apply_button_applied_text);
+                            Toast.makeText(
+                                    context,
+                                    context.getString(R.string.unapplied_toast, project.getName()),
+                                    Toast.LENGTH_LONG)
+                                    .show();
+                        }
+                    });
+                } else {
+                    ((Activity) context).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            project.setIsApplied(service.applyForProject(project));
+                            appliedButton.setText(R.string.unapply_button_applied_text);
                             Toast.makeText(
                                     context,
                                     context.getString(R.string.applied_toast, project.getName()),

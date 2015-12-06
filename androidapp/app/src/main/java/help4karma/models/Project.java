@@ -38,6 +38,16 @@ public class Project {
     private Double lat;
     private Double lon;
 
+    private boolean isApplied = false;
+
+    public boolean isApplied() {
+        return isApplied;
+    }
+
+    public void setIsApplied(boolean isApplied) {
+        this.isApplied = isApplied;
+    }
+
     public String getName() {
         return name;
     }

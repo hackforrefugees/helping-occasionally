@@ -1,2 +1,4 @@
 elasticsearch/logs/*
 elasticsearch/data/*
+androidapp/.idea/*
+*.iml

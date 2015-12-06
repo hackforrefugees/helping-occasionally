@@ -4,8 +4,12 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_maps">Map</string>
-    <string name="switch_map_button">Swtich To Map</string>
-
+    <string name="switch_map_button">Switch To Map</string>
+    <string name="switch_list_button">Switch To Project List</string>
+    <string name="switch_next_project">Next</string>
+    <string name="switch_previous_project">Previous</string>
     <string name="applied_toast">Applied to %s. Thank you!</string>
-    <string name="applied_button_applied_text">Applied</string>
+    <string name="unapplied_toast">Unapplied from %s. So so sad!</string>
+    <string name="unapply_button_applied_text">Unapply</string>
+    <string name="apply_button_applied_text">Apply</string>
 </resources>
