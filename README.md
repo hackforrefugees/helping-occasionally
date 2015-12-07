@@ -1,15 +1,13 @@
-# helping-occasionaly
+# Hack4Karma
+
 Description: A lot of churches, organisations and others have opened up short transit homes, are handing out food and clothes to refugees or are helping out in other ways. They mostly rely on volunteers to help. However, some organisations have an abundance of volunteers whereas others are finding it hard to find enough people to help. A lot of people want to help, but they don't know when, where or what help is needed. 
 
-# Instructions
-* Remember to only use libraries, content etc that is compatible with an open source license.
-* Replace this file with something describing your project.
-* Push continously to your repo during the hack.
-* If anything is unclear, just ask! :)
+# Our mission
+To catalyze change by providing a trusted online humanitarian platform to create, connect, and succeed.
 
-# Presentations
-* Prepare a 2 minute presentation of your project. Be effective!
-* If you have any audio/video needs, sync with us so things can go smoothly.
+# The vision
+To catalyze human effort on a scale never dreamed before. 
+
 
 # Showcase
 We will put up a showcase site to show all of your hacks to the world!  But for this we need the showcase to look its best. We need you to fill in some additional info in your GitHub repos. Some of you might not have to do this. We’ve guesstimated that this will take you around 12.5 minutes. About 4 minutes if you're familiar with git and GitHub!
