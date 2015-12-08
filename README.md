@@ -1,4 +1,4 @@
-# Hack4Karma
+# Helping Occasionally (Hack4Karma)
 
 Description: A lot of churches, organisations and others have opened up short transit homes, are handing out food and clothes to refugees or are helping out in other ways. They mostly rely on volunteers to help. However, some organisations have an abundance of volunteers whereas others are finding it hard to find enough people to help. A lot of people want to help, but they don't know when, where or what help is needed. 
 
